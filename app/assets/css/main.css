@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f5f2ec;
+}
+
+::selection {
+  background: #b7925a;
+  color: #121212;
+}
+
+.cinematic-overlay {
+  background:
+    linear-gradient(90deg, rgba(18, 18, 18, 0.82), rgba(18, 18, 18, 0.34) 56%, rgba(18, 18, 18, 0.62)),
+    linear-gradient(0deg, rgba(18, 18, 18, 0.78), transparent 38%);
+}
+
+.section-pad {
+  @apply px-5 py-20 sm:px-8 lg:px-12 lg:py-28;
+}
+
+.container-wide {
+  @apply mx-auto w-full max-w-7xl;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.28em] text-brass;
+}
+
+.btn-primary {
+  @apply inline-flex min-h-12 items-center justify-center rounded-full bg-brass px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-ink transition hover:bg-pearl focus:outline-none focus:ring-2 focus:ring-brass focus:ring-offset-2 focus:ring-offset-ink;
+}
+
+.btn-secondary {
+  @apply inline-flex min-h-12 items-center justify-center rounded-full border border-white/35 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-brass hover:text-brass focus:outline-none focus:ring-2 focus:ring-brass focus:ring-offset-2 focus:ring-offset-ink;
+}
+
+.field {
+  @apply w-full rounded-none border-0 border-b border-ink/20 bg-transparent px-0 py-4 text-sm text-ink outline-none transition placeholder:text-stone focus:border-brass;
+}
+
+.dark-field {
+  @apply w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-4 text-sm text-white outline-none transition placeholder:text-white/50 focus:border-brass;
+}
