@@ -1,9 +1,9 @@
 {
-  "name": "splat-estate-media",
+  "name": "halton-spatial",
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=24.11.0 <25 || >=26.0.0"
+    "node": ">=24.11.0 <27"
   },
   "scripts": {
     "dev": "vite",
@@ -13,10 +13,12 @@
   },
   "dependencies": {
     "@vueuse/head": "^2.0.0",
+    "three": "^0.178.0",
     "vue": "^3.4.0",
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
+    "@types/three": "^0.184.1",
     "@vitejs/plugin-vue": "^4.2.0",
     "@vue/compiler-sfc": "^3.4.0",
     "autoprefixer": "^10.4.19",

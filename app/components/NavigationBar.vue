@@ -1,38 +1,50 @@
 <script setup lang="ts">
-const isOpen = ref(false)
-const isScrolled = ref(false)
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import { company } from "~/data/site";
+
+const isOpen = ref(false);
+const isScrolled = ref(false);
 
 const links = [
-  { label: 'Home', to: '/' },
-  { label: 'Portfolio', to: '/portfolio' },
-  { label: 'Pricing', to: '/pricing' },
-  { label: 'About', to: '/about' },
-  { label: 'Contact', to: '/contact' }
-]
+  { label: "Home", to: "/" },
+  { label: "Projects", to: "/projects" },
+  { label: "Services", to: "/services" },
+];
 
 const updateScroll = () => {
-  isScrolled.value = window.scrollY > 20
-}
+  isScrolled.value = window.scrollY > 20;
+};
 
 onMounted(() => {
-  updateScroll()
-  window.addEventListener('scroll', updateScroll, { passive: true })
-})
+  updateScroll();
+  window.addEventListener("scroll", updateScroll, { passive: true });
+});
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', updateScroll)
-})
+  window.removeEventListener("scroll", updateScroll);
+});
 </script>
 
 <template>
   <header
     class="fixed inset-x-0 top-0 z-50 transition duration-500"
-    :class="isScrolled || isOpen ? 'bg-ink/92 shadow-cinematic backdrop-blur-xl' : 'bg-transparent'"
+    :class="isScrolled || isOpen ? 'bg-ink shadow-cinematic' : 'bg-ink'"
   >
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
-      <RouterLink to="/" class="flex items-center gap-3 text-white" @click="isOpen = false">
-        <span class="flex h-10 w-10 items-center justify-center border border-brass text-sm font-semibold text-brass">SS</span>
-        <span class="text-sm font-semibold uppercase tracking-[0.22em]">Splat Spatial</span>
+    <nav
+      class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12"
+    >
+      <RouterLink
+        to="/"
+        class="flex items-center gap-3 text-white"
+        @click="isOpen = false"
+      >
+        <span
+          class="flex h-10 w-10 items-center justify-center border border-brass text-sm font-semibold text-brass"
+          >HS</span
+        >
+        <span class="text-sm font-semibold uppercase tracking-[0.22em]">{{
+          company.name
+        }}</span>
       </RouterLink>
 
       <div class="hidden items-center gap-8 lg:flex">
@@ -44,6 +56,14 @@ onBeforeUnmount(() => {
         >
           {{ link.label }}
         </RouterLink>
+        <a
+          :href="company.instagramUrl"
+          class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75 transition hover:text-brass"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram
+        </a>
         <RouterLink to="/get-quote" class="btn-primary">Get a Quote</RouterLink>
       </div>
 
@@ -62,7 +82,10 @@ onBeforeUnmount(() => {
       </button>
     </nav>
 
-    <div v-if="isOpen" class="border-t border-white/10 bg-ink px-5 pb-6 lg:hidden">
+    <div
+      v-if="isOpen"
+      class="border-t border-white/10 bg-ink px-5 pb-6 lg:hidden"
+    >
       <div class="flex flex-col gap-4 pt-5">
         <RouterLink
           v-for="link in links"
@@ -73,7 +96,20 @@ onBeforeUnmount(() => {
         >
           {{ link.label }}
         </RouterLink>
-        <RouterLink to="/get-quote" class="btn-primary w-full" @click="isOpen = false">Get a Quote</RouterLink>
+        <a
+          :href="company.instagramUrl"
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram
+        </a>
+        <RouterLink
+          to="/get-quote"
+          class="btn-primary w-full"
+          @click="isOpen = false"
+          >Get a Quote</RouterLink
+        >
       </div>
     </div>
   </header>

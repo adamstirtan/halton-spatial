@@ -1,18 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "~/pages/index.vue";
-import About from "~/pages/about.vue";
-import Portfolio from "~/pages/portfolio.vue";
+import Projects from "~/pages/projects.vue";
+import ProjectDetail from "~/pages/project-detail.vue";
+import Services from "~/pages/services.vue";
 import GetQuote from "~/pages/get-quote.vue";
-import Contact from "~/pages/contact.vue";
-import Pricing from "~/pages/pricing.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
-  { path: "/about", name: "About", component: About },
-  { path: "/portfolio", name: "Portfolio", component: Portfolio },
+  { path: "/projects", name: "Projects", component: Projects },
+  { path: "/projects/:slug", name: "ProjectDetail", component: ProjectDetail },
+  { path: "/services", name: "Services", component: Services },
   { path: "/get-quote", name: "GetQuote", component: GetQuote },
-  { path: "/contact", name: "Contact", component: Contact },
-  { path: "/pricing", name: "Pricing", component: Pricing },
+  { path: "/portfolio", redirect: "/projects" },
+  { path: "/about", redirect: "/services" },
+  { path: "/contact", redirect: "/get-quote" },
+  { path: "/pricing", redirect: "/services" },
 ];
 
 export const router = createRouter({

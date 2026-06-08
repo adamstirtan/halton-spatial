@@ -1,303 +1,585 @@
-export type IndustryCategory = 'Real Estate' | 'Construction' | 'Architecture' | 'Arts & Culture' | 'Hospitality'
+export type ProjectIndustry =
+  | "Real Estate"
+  | "Construction & Development"
+  | "Commercial & Retail Spaces"
+  | "Arts, Museums & Public Installations"
+  | "Drone & Aerial Documentation";
 
-export interface PortfolioItem {
-  id: number
-  title: string
-  address: string
-  category: IndustryCategory
-  type: string
-  squareFeet: string
-  metric: string
-  details: string
-  description: string
-  image: string
-  images: string[]
-  videoLabel: string
+export type ViewerSceneType =
+  | "abstract"
+  | "point-cloud"
+  | "ply"
+  | "gaussian-splat"
+  | "photogrammetry"
+  | "digital-twin";
+
+export interface ViewerMedia {
+  title: string;
+  summary: string;
+  sceneType: ViewerSceneType;
+  interactionHint: string;
+  futureLoader: "points" | "PLYLoader" | "GaussianSplatLoader";
+  assetUrl?: string;
 }
 
-export type Property = PortfolioItem
-
-export interface Testimonial {
-  quote: string
-  name: string
-  role: string
+export interface Company {
+  name: string;
+  email: string;
+  phone: string;
+  serviceArea: string;
+  region: string;
+  instagramHandle: string;
+  instagramUrl: string;
 }
 
-export interface PricingPackage {
-  name: string
-  description: string
-  price: string
-  featured?: boolean
-  services: string[]
+export interface HomeHero {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  primaryLabel: string;
+  primaryTo: string;
+  secondaryLabel: string;
+  secondaryTo: string;
+}
+
+export interface WhatWeDoItem {
+  title: string;
+  description: string;
+}
+
+export interface BenefitItem {
+  title: string;
+  description: string;
+}
+
+export interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
+export interface ServiceCategory {
+  slug: string;
+  title: string;
+  summary: string;
+  bullets: string[];
 }
 
 export interface Industry {
-  name: string
-  description: string
-  image: string
+  name: ProjectIndustry;
+  description: string;
+  audience: string;
+  image: string;
 }
 
-export interface ServiceOffering {
-  title: string
-  description: string
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
 }
 
-export const company = {
-  name: 'Splat Spatial Studio',
-  email: 'hello@splatspatial.com',
-  phone: '(365) 778-1337',
-  serviceArea: 'Halton Region, Durham Region, York Region, Peel Region. Toronto, Missisauga, Brampton, Oakville, Burlington, Hamilton, and surrounding areas.',
+export interface InstagramSection {
+  title: string;
+  description: string;
+  buttonLabel: string;
+  checklist: string[];
 }
 
-const imageUrl = (id: string, width = 1400, height = 1100) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&h=${height}&q=85`
+export interface Project {
+  id: number;
+  slug: string;
+  title: string;
+  location: string;
+  industry: ProjectIndustry;
+  cardLabel: string;
+  type: string;
+  metric: string;
+  details: string;
+  summary: string;
+  description: string;
+  image: string;
+  gallery: string[];
+  deliverables: string[];
+  scope: string[];
+  featured?: boolean;
+  hasInteractiveViewer?: boolean;
+  viewer: ViewerMedia;
+  instagramNote: string;
+}
 
-export const services = [
-  'Interactive 3D Tours',
-  'Digital Twin Creation',
-  'Drone-Based Capture',
-  'Spatial Documentation',
-  'Progress Monitoring',
-  'Virtual Exhibits'
-]
+export type PortfolioItem = Project;
+export type Property = Project;
 
-export const serviceOfferings: ServiceOffering[] = [
+const imageUrl = (id: string, width = 1600, height = 1200) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&h=${height}&q=85`;
+
+export const company: Company = {
+  name: "Halton Spatial",
+  email: "hello@haltonspatial.com",
+  phone: "(365) 778-1337",
+  serviceArea:
+    "Based in Halton Region, Ontario. Serving Burlington, Oakville, Milton, Halton Hills, Hamilton, Mississauga, and surrounding communities.",
+  region: "Halton Region, Ontario",
+  instagramHandle: "@HaltonSpatial",
+  instagramUrl: "https://instagram.com/HaltonSpatial",
+};
+
+export const homeHero: HomeHero = {
+  eyebrow: "Halton Region 3D Capture Studio",
+  title: "Interactive 3D Photos & Virtual Tours",
+  subtitle:
+    "Explore real-world spaces online through immersive 3D walkthroughs and digital twins.",
+  primaryLabel: "Get a Quote",
+  primaryTo: "/get-quote",
+  secondaryLabel: "View Projects",
+  secondaryTo: "/projects",
+};
+
+export const whatWeDoItems: WhatWeDoItem[] = [
   {
-    title: 'Interactive 3D Tours',
-    description: 'High-quality navigable experiences for buildings, venues, exhibits, sites, and physical environments.'
+    title: "3D Photos",
+    description:
+      "Create rich spatial imagery that helps people understand scale, layout, and finish before they arrive in person.",
   },
   {
-    title: 'Digital Twin Creation',
-    description: 'Accurate digital representations of real-world spaces for documentation, planning, marketing, and remote access.'
+    title: "Virtual Tours",
+    description:
+      "Let visitors move through a property, project, exhibit, or venue online at their own pace from any device.",
   },
   {
-    title: 'Drone Capture & Mapping',
-    description: 'Aerial imagery, spatial context, and reconstruction support for properties, developments, campuses, and venues.'
+    title: "Digital Twins",
+    description:
+      "Build a lasting visual record of a real-world space for documentation, presentation, and future reference.",
   },
   {
-    title: 'Construction Progress Documentation',
-    description: 'Recurring site captures, milestone reporting, and visual records for development teams and stakeholders.'
+    title: "Web Embedding",
+    description:
+      "Publish interactive experiences on your website, landing pages, and presentations with simple hosted delivery.",
   },
   {
-    title: 'Virtual Exhibits & Cultural Preservation',
-    description: 'Interactive experiences for museums, galleries, archives, churches, public art, and heritage organizations.'
+    title: "Progress Documentation",
+    description:
+      "Track change over time for construction, fit-outs, installations, and site development with clear visual updates.",
   },
-  {
-    title: 'Venue & Hospitality Experiences',
-    description: 'Immersive previews for destinations, hotels, event spaces, restaurants, resorts, and visitor attractions.'
-  }
-]
+];
+
+export const services = whatWeDoItems.map((item) => item.title);
 
 export const industries: Industry[] = [
   {
-    name: 'Real Estate',
-    description: 'Interactive residential, commercial, and luxury property tours that help spaces feel tangible before a visit.',
-    image: imageUrl('1600585154340-be6161a56a0c')
+    name: "Real Estate",
+    description:
+      "Interactive property marketing that helps buyers, tenants, and decision-makers understand a space before booking a visit.",
+    audience:
+      "Residential listings, luxury homes, commercial leasing, and development marketing.",
+    image: imageUrl("1600585154340-be6161a56a0c"),
   },
   {
-    name: 'Construction',
-    description: 'Recurring site documentation for progress updates, stakeholder reviews, milestone records, and remote visibility.',
-    image: imageUrl('1503387762-592deb58ef4e')
+    name: "Construction & Development",
+    description:
+      "Capture recurring site conditions, milestones, and handoff-ready records for teams that need visual accountability.",
+    audience:
+      "Builders, developers, general contractors, consultants, and owners.",
+    image: imageUrl("1504307651254-35680f356dfd"),
   },
   {
-    name: 'Architecture & Design',
-    description: 'Spatial captures for studios, showrooms, finished interiors, adaptive reuse, design review, and portfolio storytelling.',
-    image: imageUrl('1497366754035-f200968a6e72')
+    name: "Commercial & Retail Spaces",
+    description:
+      "Showcase stores, hospitality venues, offices, and customer environments with a stronger sense of flow and atmosphere.",
+    audience:
+      "Retail, hospitality, office, and destination-focused businesses.",
+    image: imageUrl("1524758631624-e2822e304c36"),
   },
   {
-    name: 'Arts & Culture',
-    description: 'Digital preservation and interactive access for museums, galleries, sculptures, historic interiors, and cultural assets.',
-    image: imageUrl('1564399579883-451a5d44ec08')
+    name: "Arts, Museums & Public Installations",
+    description:
+      "Preserve exhibits, public art, and cultural spaces with interactive documentation that supports access and interpretation.",
+    audience:
+      "Museums, galleries, municipalities, curators, and cultural organizations.",
+    image: imageUrl("1518998053901-5348d3961a04"),
   },
   {
-    name: 'Hospitality & Tourism',
-    description: 'Immersive walkthroughs for hotels, event venues, destinations, restaurants, and experience-led visitor marketing.',
-    image: imageUrl('1566073771259-6a8506099945')
-  }
-]
+    name: "Drone & Aerial Documentation",
+    description:
+      "Add site-wide context for large properties, outdoor spaces, and active developments where overhead visibility matters.",
+    audience:
+      "Large properties, campuses, development sites, and outdoor public spaces.",
+    image: imageUrl("1508614999368-9260051292e5"),
+  },
+];
 
-export const portfolioItems: PortfolioItem[] = [
+export const whyHaltonSpatial: BenefitItem[] = [
+  {
+    title: "Full-Service Capture",
+    description:
+      "We handle on-site capture, processing, hosting, and delivery so your team can stay focused on the project itself.",
+  },
+  {
+    title: "No Equipment Required",
+    description:
+      "There is no camera kit to buy, no scanner to manage, and no learning curve for your staff.",
+  },
+  {
+    title: "No Platform Management",
+    description:
+      "You do not need to maintain software subscriptions or troubleshoot the technology behind the final experience.",
+  },
+  {
+    title: "Local Service",
+    description:
+      "Halton Spatial works locally across Halton Region and nearby communities with responsive scheduling and on-site support.",
+  },
+  {
+    title: "Modern Visualization Technology",
+    description:
+      "Your project benefits from contemporary 3D presentation tools without forcing clients and stakeholders into technical workflows.",
+  },
+];
+
+export const processSteps: ProcessStep[] = [
+  {
+    step: "01",
+    title: "Capture",
+    description:
+      "We visit the site, plan the path through the space, and collect the visual data needed for the final experience.",
+  },
+  {
+    step: "02",
+    title: "Process",
+    description:
+      "The capture is cleaned, organized, and prepared for fast online viewing, documentation, and presentation.",
+  },
+  {
+    step: "03",
+    title: "Deliver",
+    description:
+      "You receive hosted outputs, embeds, preview links, and assets tailored to the way your team plans to use them.",
+  },
+  {
+    step: "04",
+    title: "Share",
+    description:
+      "Publish the experience across your website, proposals, investor updates, social channels, and client communication.",
+  },
+];
+
+export const serviceCategories: ServiceCategory[] = [
+  {
+    slug: "real-estate-tours",
+    title: "Real Estate Tours",
+    summary:
+      "Property marketing experiences built to help buyers and tenants understand a space before the first visit.",
+    bullets: [
+      "Property marketing",
+      "Interactive walkthroughs",
+      "Shareable links",
+    ],
+  },
+  {
+    slug: "construction-documentation",
+    title: "Construction Documentation",
+    summary:
+      "Recurring visual records that support progress tracking, milestone review, and historical reference.",
+    bullets: ["Progress tracking", "Site documentation", "Historical records"],
+  },
+  {
+    slug: "commercial-spaces",
+    title: "Commercial Spaces",
+    summary:
+      "Immersive presentations for retail, hospitality, and office environments where layout and atmosphere matter.",
+    bullets: ["Retail", "Hospitality", "Office environments"],
+  },
+  {
+    slug: "arts-culture",
+    title: "Arts & Culture",
+    summary:
+      "Digital preservation and public-facing presentation for exhibits, installations, and sculptural work.",
+    bullets: ["Sculptures", "Installations", "Exhibits"],
+  },
+  {
+    slug: "drone-capture",
+    title: "Drone Capture",
+    summary:
+      "Aerial coverage for large sites, outdoor environments, and overview storytelling across complex spaces.",
+    bullets: ["Large properties", "Outdoor spaces", "Site overviews"],
+  },
+];
+
+export const serviceOfferings = serviceCategories.map((service) => ({
+  title: service.title,
+  description: service.summary,
+}));
+
+export const projects: Project[] = [
   {
     id: 1,
-    title: 'Luxury Lakefront Home',
-    address: 'Luxury Lakefront Home',
-    category: 'Real Estate',
-    type: 'Interactive Residential Property Tour',
-    squareFeet: '4,250 sq ft',
-    metric: '4,250 sq ft',
-    details: 'Residential capture / Interior and exterior walkthrough',
-    description: 'A premium digital twin and guided tour for remote exploration of a waterfront residence.',
-    image: imageUrl('1600585154340-be6161a56a0c'),
-    images: [
-      imageUrl('1600585154340-be6161a56a0c'),
-      imageUrl('1600566753190-17f0baa2a6c3'),
-      imageUrl('1600607687939-ce8a6c25118c')
+    slug: "oakville-lakeshore-residence",
+    title: "Oakville Lakeshore Residence",
+    location: "Oakville, Ontario",
+    industry: "Real Estate",
+    cardLabel: "Featured Property Tour",
+    type: "Interactive Residential Walkthrough",
+    metric: "4,800 sq ft home",
+    details: "Luxury listing presentation with hosted tour delivery",
+    summary:
+      "A premium residential tour designed to help remote buyers understand layout, finishes, and flow before an in-person showing.",
+    description:
+      "This capture package combined immersive walkthrough storytelling with polished hosted delivery, giving agents and buyers a stronger sense of how the space feels beyond still photography alone.",
+    image: imageUrl("1600607687920-4e2a09cf159d"),
+    gallery: [
+      imageUrl("1600607687920-4e2a09cf159d"),
+      imageUrl("1600585154340-be6161a56a0c"),
+      imageUrl("1600566753190-17f0baa2a6c3"),
     ],
-    videoLabel: 'Residential tour teaser placeholder'
+    deliverables: [
+      "Hosted interactive walkthrough",
+      "Web-ready embed",
+      "Agent share link",
+    ],
+    scope: ["Interior capture", "Exterior highlights", "Branded delivery page"],
+    featured: true,
+    viewer: {
+      title: "Residential viewer placeholder",
+      summary: "Future 3D tour embed area for a residential digital twin.",
+      sceneType: "digital-twin",
+      interactionHint: "Drag to orbit and explore a future hosted scene.",
+      futureLoader: "PLYLoader",
+    },
+    instagramNote:
+      "Ideal for before-and-after reels, agent walkthrough teasers, and listing launch content.",
   },
   {
     id: 2,
-    title: 'Commercial Development Site',
-    address: 'Commercial Development Site',
-    category: 'Construction',
-    type: 'Monthly Drone-Based Construction Capture',
-    squareFeet: '18-acre site',
-    metric: '18-acre site',
-    details: 'Progress monitoring / Aerial and ground capture',
-    description: 'Recurring spatial documentation for stakeholder updates, milestone review, and remote site visibility.',
-    image: imageUrl('1503387762-592deb58ef4e'),
-    images: [
-      imageUrl('1503387762-592deb58ef4e'),
-      imageUrl('1541888946425-d81bb19240f5'),
-      imageUrl('1485083269755-a7b559a4fe5e')
+    slug: "milton-industrial-expansion",
+    title: "Milton Industrial Expansion",
+    location: "Milton, Ontario",
+    industry: "Construction & Development",
+    cardLabel: "Monthly Site Documentation",
+    type: "Construction Progress Capture",
+    metric: "18-acre active site",
+    details: "Recurring drone and ground-based documentation",
+    summary:
+      "Recurring captures created a clear visual timeline for stakeholders reviewing progress without constant site visits.",
+    description:
+      "The project focused on consistent site-wide documentation that could support reporting, owner updates, and internal coordination across an active development schedule.",
+    image: imageUrl("1504307651254-35680f356dfd"),
+    gallery: [
+      imageUrl("1504307651254-35680f356dfd"),
+      imageUrl("1541888946425-d81bb19240f5"),
+      imageUrl("1485083269755-a7b559a4fe5e"),
     ],
-    videoLabel: 'Construction progress reel placeholder'
+    deliverables: [
+      "Recurring progress views",
+      "Stakeholder-ready updates",
+      "Historical visual archive",
+    ],
+    scope: [
+      "Drone overviews",
+      "Ground-level checkpoints",
+      "Milestone comparisons",
+    ],
+    featured: true,
+    viewer: {
+      title: "Site progress viewer placeholder",
+      summary:
+        "Future timeline viewer for comparing spatial documentation across milestones.",
+      sceneType: "point-cloud",
+      interactionHint:
+        "Orbit the placeholder scene to preview how future site models can be explored.",
+      futureLoader: "PLYLoader",
+    },
+    instagramNote:
+      "Supports milestone posts, progress reels, and behind-the-scenes site updates.",
   },
   {
     id: 3,
-    title: 'Historic Church Interior',
-    address: 'Historic Church Interior',
-    category: 'Arts & Culture',
-    type: 'Preservation-Grade Digital Twin',
-    squareFeet: 'Heritage interior',
-    metric: 'Heritage interior',
-    details: 'Cultural preservation / Nave, altar, and architectural details',
-    description: 'High-fidelity spatial capture designed to preserve and share a historic interior for remote audiences.',
-    image: imageUrl('1548625361-58a9b86aa83b'),
-    images: [
-      imageUrl('1548625361-58a9b86aa83b'),
-      imageUrl('1524230572899-a752b3835840'),
-      imageUrl('1518998053901-5348d3961a04')
+    slug: "burlington-flagship-showroom",
+    title: "Burlington Flagship Showroom",
+    location: "Burlington, Ontario",
+    industry: "Commercial & Retail Spaces",
+    cardLabel: "Retail Experience Capture",
+    type: "Commercial Space Tour",
+    metric: "12,000 sq ft showroom",
+    details: "Sales and leasing support for a customer-facing environment",
+    summary:
+      "An interactive walkthrough designed to help customers, partners, and leasing stakeholders understand the space remotely.",
+    description:
+      "The showroom capture focused on circulation, merchandising zones, and brand presentation so the business could use one asset across sales conversations, internal planning, and online promotion.",
+    image: imageUrl("1524758631624-e2822e304c36"),
+    gallery: [
+      imageUrl("1524758631624-e2822e304c36"),
+      imageUrl("1497366754035-f200968a6e72"),
+      imageUrl("1564501049412-61c2a3083791"),
     ],
-    videoLabel: 'Preservation walkthrough placeholder'
+    deliverables: [
+      "Hosted experience",
+      "Embedded viewer section",
+      "Presentation-ready stills",
+    ],
+    scope: [
+      "Front-of-house capture",
+      "Merchandising zones",
+      "Customer path mapping",
+    ],
+    featured: true,
+    hasInteractiveViewer: true,
+    viewer: {
+      title: "Embedded 3D retail showcase",
+      summary:
+        "Future interactive viewer slot for a Three.js, PLY, or Gaussian Splat project embed.",
+      sceneType: "gaussian-splat",
+      interactionHint:
+        "Use the mouse or touch to orbit the prototype scene and imagine a finished showroom capture.",
+      futureLoader: "GaussianSplatLoader",
+    },
+    instagramNote:
+      "Works well for opening campaigns, behind-the-scenes merch installs, and launch-week teaser content.",
   },
   {
     id: 4,
-    title: 'Museum Sculpture Collection',
-    address: 'Museum Sculpture Collection',
-    category: 'Arts & Culture',
-    type: 'Interactive 3D Exhibit',
-    squareFeet: '12 collection objects',
-    metric: '12 collection objects',
-    details: 'Object capture / Gallery-scale visitor experience',
-    description: 'A virtual exhibit prototype for sculpture viewing, curatorial interpretation, and accessible digital engagement.',
-    image: imageUrl('1564399579883-451a5d44ec08'),
-    images: [
-      imageUrl('1564399579883-451a5d44ec08'),
-      imageUrl('1577083552431-6e5fd01aa342'),
-      imageUrl('1547891654-e66ed7ebb968')
+    slug: "hamilton-public-art-walkthrough",
+    title: "Hamilton Public Art Walkthrough",
+    location: "Hamilton, Ontario",
+    industry: "Arts, Museums & Public Installations",
+    cardLabel: "Exhibit Documentation",
+    type: "Cultural Space Preservation",
+    metric: "Multi-room installation",
+    details: "Interactive documentation for interpretation and public access",
+    summary:
+      "A digital record of an installation environment that supports archive, access, and community engagement goals.",
+    description:
+      "This concept case study demonstrates how interactive documentation can preserve the relationship between artwork, architecture, and circulation through a public-facing experience.",
+    image: imageUrl("1518998053901-5348d3961a04"),
+    gallery: [
+      imageUrl("1518998053901-5348d3961a04"),
+      imageUrl("1564399579883-451a5d44ec08"),
+      imageUrl("1548625361-58a9b86aa83b"),
     ],
-    videoLabel: 'Virtual exhibit preview placeholder'
+    deliverables: [
+      "Interactive archive view",
+      "Curatorial embed support",
+      "Remote public access",
+    ],
+    scope: [
+      "Gallery capture",
+      "Interpretive story framing",
+      "Public engagement delivery",
+    ],
+    viewer: {
+      title: "Exhibit viewer placeholder",
+      summary:
+        "Future photogrammetry or splat-driven exhibit presentation area.",
+      sceneType: "photogrammetry",
+      interactionHint:
+        "Orbit the abstract scene to preview how future cultural captures can be presented online.",
+      futureLoader: "GaussianSplatLoader",
+    },
+    instagramNote:
+      "Strong fit for exhibition previews, install progress, and visitor engagement posts.",
   },
   {
     id: 5,
-    title: 'Wedding Venue Showcase',
-    address: 'Wedding Venue Showcase',
-    category: 'Hospitality',
-    type: 'Immersive Venue Walkthrough',
-    squareFeet: 'Indoor and outdoor venue',
-    metric: 'Indoor and outdoor venue',
-    details: 'Hospitality marketing / Event layout and guest flow',
-    description: 'An immersive destination preview that helps couples, planners, and guests understand the venue remotely.',
-    image: imageUrl('1519225421980-715cb0215aed'),
-    images: [
-      imageUrl('1519225421980-715cb0215aed'),
-      imageUrl('1519167758481-83f550bb49b3'),
-      imageUrl('1523438097201-512ae7d59c44')
+    slug: "mississauga-mixed-use-aerial",
+    title: "Mississauga Mixed-Use Aerial Survey",
+    location: "Mississauga, Ontario",
+    industry: "Drone & Aerial Documentation",
+    cardLabel: "Aerial Site Overview",
+    type: "Drone Documentation Project",
+    metric: "Large multi-building site",
+    details: "Aerial context and overview storytelling for a complex property",
+    summary:
+      "Aerial capture created a broader understanding of access, scale, and site relationships for a developing mixed-use property.",
+    description:
+      "This project focused on large-scale spatial context, helping stakeholders understand how multiple buildings and outdoor zones relate across the wider site.",
+    image: imageUrl("1508614999368-9260051292e5"),
+    gallery: [
+      imageUrl("1508614999368-9260051292e5"),
+      imageUrl("1500530855697-b586d89ba3ee"),
+      imageUrl("1494526585095-c41746248156"),
     ],
-    videoLabel: 'Venue showcase film placeholder'
+    deliverables: [
+      "Aerial overview assets",
+      "Project update visuals",
+      "Site-wide presentation support",
+    ],
+    scope: [
+      "Drone flight planning",
+      "Site overview capture",
+      "Remote stakeholder sharing",
+    ],
+    viewer: {
+      title: "Aerial point-cloud placeholder",
+      summary:
+        "Future point-cloud and survey-style viewer for large outdoor captures.",
+      sceneType: "ply",
+      interactionHint:
+        "Orbit the placeholder scene to preview site-scale exploration.",
+      futureLoader: "PLYLoader",
+    },
+    instagramNote:
+      "Ideal for flyover clips, project overview reels, and phased development updates.",
   },
-  {
-    id: 6,
-    title: 'Design Studio Fit-Out',
-    address: 'Design Studio Fit-Out',
-    category: 'Architecture',
-    type: 'Architectural Space Documentation',
-    squareFeet: '8,600 sq ft',
-    metric: '8,600 sq ft',
-    details: 'Architecture and design / Finished interior capture',
-    description: 'A polished spatial record for design review, remote presentation, portfolio use, and client communication.',
-    image: imageUrl('1497366754035-f200968a6e72'),
-    images: [
-      imageUrl('1497366754035-f200968a6e72'),
-      imageUrl('1600607687920-4e2a09cf159d'),
-      imageUrl('1600210492486-724fe5c67fb3')
-    ],
-    videoLabel: 'Architecture walkthrough placeholder'
-  },
-  {
-    id: 7,
-    title: 'Boutique Hotel Lobby',
-    address: 'Boutique Hotel Lobby',
-    category: 'Hospitality',
-    type: 'Destination Experience Preview',
-    squareFeet: 'Guest arrival sequence',
-    metric: 'Guest arrival sequence',
-    details: 'Hotel and tourism / Lobby, lounge, and amenities',
-    description: 'An interactive first impression for guests, event planners, travel partners, and brand marketing teams.',
-    image: imageUrl('1566073771259-6a8506099945'),
-    images: [
-      imageUrl('1566073771259-6a8506099945'),
-      imageUrl('1564501049412-61c2a3083791'),
-      imageUrl('1542314831-068cd1dbfeeb')
-    ],
-    videoLabel: 'Hospitality experience placeholder'
-  }
-]
+];
 
-export const properties: Property[] = portfolioItems
+export const portfolioItems: PortfolioItem[] = projects;
+export const properties: Property[] = projects;
+export const featuredProjects = projects.filter((project) => project.featured);
+export const projectFilters = [
+  "All",
+  ...industries.map((industry) => industry.name),
+];
 
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'The interactive capture gave remote buyers a real sense of scale and flow before they scheduled an in-person visit.',
-    name: 'Maya Chen',
-    role: 'Real Estate Professional'
+      "The walkthrough helped clients understand the property immediately. It felt far more informative than photography on its own.",
+    name: "Maya Chen",
+    role: "Real Estate Broker",
   },
   {
     quote:
-      'Monthly captures made stakeholder meetings clearer. Everyone could see site progress without waiting for a field visit.',
-    name: 'Daniel Ortiz',
-    role: 'Construction Project Manager'
+      "Recurring captures gave our team a much clearer way to report progress and keep stakeholders aligned across the project.",
+    name: "Daniel Ortiz",
+    role: "Construction Project Manager",
   },
   {
     quote:
-      'The digital twin helped us present the finished interior with a level of spatial context photography alone could not provide.',
-    name: 'Nadia Bell',
-    role: 'Architect'
+      "We wanted something approachable for the public but more advanced than a gallery of stills. The interactive presentation solved that gap.",
+    name: "Sarah Baptiste",
+    role: "Museum Curator",
   },
-  {
-    quote:
-      'We needed both preservation and public access. The interactive exhibit created a careful record and a more engaging visitor experience.',
-    name: 'Sarah Baptiste',
-    role: 'Museum Curator'
-  },
-  {
-    quote:
-      'Couples can walk through our venue before touring in person. It has become one of our most useful planning and sales tools.',
-    name: 'Elena Park',
-    role: 'Venue Owner'
-  }
-]
+];
 
-export const pricingPackages: PricingPackage[] = [
-  {
-    name: 'Single Capture Project',
-    description: 'One-time 3D capture and delivery for a specific space, venue, site, exhibit, or object collection.',
-    price: 'Custom Quote',
-    services: ['Interactive tour delivery', 'Hosted preview link', 'Core spatial capture']
-  },
-  {
-    name: 'Professional Documentation',
-    description: 'Multi-session capture with enhanced deliverables for teams that need richer context and reporting.',
-    price: 'Custom Quote',
-    featured: true,
-    services: ['Multiple capture sessions', 'Photography and video support', 'Enhanced documentation package']
-  },
-  {
-    name: 'Enterprise & Ongoing Projects',
-    description: 'Recurring documentation, complex environments, custom integrations, and long-term visualization programs.',
-    price: 'Custom Quote',
-    services: ['Recurring capture schedule', 'Custom viewer and sharing needs', 'Stakeholder-ready deliverables']
-  }
-]
+export const technologyShowcase = {
+  eyebrow: "Interactive 3D Visualization",
+  title: "Built to showcase spaces in a more immersive way.",
+  description:
+    "Halton Spatial is structured around modern 3D visualization workflows so future projects can support richer online exploration, clearer documentation, and more compelling project storytelling.",
+  supportingPoints: [
+    "Future support for PLY point clouds",
+    "Future Gaussian Splat integrations",
+    "Embeddable viewer experiences for websites and project pages",
+  ],
+};
+
+export const instagramSection: InstagramSection = {
+  title: "Follow the work as it happens.",
+  description:
+    "Instagram is where Halton Spatial shares new projects, behind-the-scenes captures, work in progress, technology demos, and local projects from across the region.",
+  buttonLabel: "Follow on Instagram",
+  checklist: [
+    "New projects",
+    "Behind-the-scenes captures",
+    "Work in progress",
+    "Technology demonstrations",
+    "Local project updates",
+  ],
+};
+
+export const finalCta = {
+  title: "Ready to Bring Your Space Online?",
+  subtitle:
+    "Tell us what you are documenting, marketing, or building and we will shape the right capture approach for it.",
+  primaryLabel: "Get a Quote",
+  primaryTo: "/get-quote",
+};
