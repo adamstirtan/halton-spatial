@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
   defineProps<{
     eyebrow?: string;
     title: string;
@@ -13,6 +13,8 @@ withDefaults(
     eyebrow: "Next Step",
   },
 );
+
+const isExternalLink = (value: string) => /^https?:\/\//i.test(value);
 </script>
 
 <template>
@@ -35,15 +37,38 @@ withDefaults(
         </p>
       </div>
       <div class="flex flex-col gap-4 sm:flex-row">
-        <RouterLink :to="primaryTo" class="btn-primary">{{
-          primaryLabel
-        }}</RouterLink>
-        <RouterLink
-          v-if="secondaryLabel && secondaryTo"
-          :to="secondaryTo"
-          class="btn-secondary"
-          >{{ secondaryLabel }}</RouterLink
+        <a
+          v-if="isExternalLink(props.primaryTo)"
+          :href="props.primaryTo"
+          class="btn-primary"
+          target="_blank"
+          rel="noreferrer"
         >
+          {{ props.primaryLabel }}
+        </a>
+        <RouterLink v-else :to="props.primaryTo" class="btn-primary">
+          {{ props.primaryLabel }}
+        </RouterLink>
+        <a
+          v-if="
+            props.secondaryLabel &&
+            props.secondaryTo &&
+            isExternalLink(props.secondaryTo)
+          "
+          :href="props.secondaryTo"
+          class="btn-secondary"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {{ props.secondaryLabel }}
+        </a>
+        <RouterLink
+          v-else-if="props.secondaryLabel && props.secondaryTo"
+          :to="props.secondaryTo"
+          class="btn-secondary"
+        >
+          {{ props.secondaryLabel }}
+        </RouterLink>
       </div>
     </div>
   </section>

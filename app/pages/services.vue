@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { serviceCategories } from "~/data/site";
+import { company, serviceCategories } from "~/data/site";
 import { useHead } from "@vueuse/head";
 import CTASection from "~/components/CTASection.vue";
 import HeroSection from "~/components/HeroSection.vue";
@@ -83,8 +83,8 @@ useHead({
       subtitle="Tell us about the space, audience, and timeline. We will recommend the right approach for the job."
       primary-label="Get a Quote"
       primary-to="/get-quote"
-      secondary-label="View Projects"
-      secondary-to="/projects"
+      secondary-label="Instagram"
+      :secondary-to="company.instagramUrl"
     />
   </main>
 </template>

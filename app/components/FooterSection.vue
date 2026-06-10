@@ -31,12 +31,6 @@ import { company } from "~/data/site";
         </h2>
         <div class="flex flex-col gap-3 text-sm text-white/68">
           <RouterLink to="/" class="hover:text-brass">Home</RouterLink>
-          <RouterLink to="/projects" class="hover:text-brass"
-            >Projects</RouterLink
-          >
-          <RouterLink to="/services" class="hover:text-brass"
-            >Services</RouterLink
-          >
           <a
             :href="company.instagramUrl"
             class="hover:text-brass"

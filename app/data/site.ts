@@ -19,8 +19,6 @@ export interface ViewerMedia {
   summary: string;
   sceneType: ViewerSceneType;
   interactionHint: string;
-  futureLoader: "points" | "PLYLoader" | "GaussianSplatLoader";
-  assetUrl?: string;
 }
 
 export interface Company {
@@ -40,7 +38,6 @@ export interface HomeHero {
   primaryLabel: string;
   primaryTo: string;
   secondaryLabel: string;
-  secondaryTo: string;
 }
 
 export interface WhatWeDoItem {
@@ -99,6 +96,7 @@ export interface Project {
   summary: string;
   description: string;
   image: string;
+  videoUrl?: string;
   gallery: string[];
   deliverables: string[];
   scope: string[];
@@ -132,8 +130,7 @@ export const homeHero: HomeHero = {
     "Explore real-world spaces online through immersive 3D walkthroughs and digital twins.",
   primaryLabel: "Get a Quote",
   primaryTo: "/get-quote",
-  secondaryLabel: "View Projects",
-  secondaryTo: "/projects",
+  secondaryLabel: "View Tesla Project",
 };
 
 export const whatWeDoItems: WhatWeDoItem[] = [
@@ -320,215 +317,6 @@ export const serviceOfferings = serviceCategories.map((service) => ({
 
 export const projects: Project[] = [
   {
-    id: 1,
-    slug: "oakville-lakeshore-residence",
-    title: "Oakville Lakeshore Residence",
-    location: "Oakville, Ontario",
-    industry: "Real Estate",
-    cardLabel: "Featured Property Tour",
-    type: "Interactive Residential Walkthrough",
-    metric: "4,800 sq ft home",
-    details: "Luxury listing presentation with hosted tour delivery",
-    summary:
-      "A premium residential tour designed to help remote buyers understand layout, finishes, and flow before an in-person showing.",
-    description:
-      "This capture package combined immersive walkthrough storytelling with polished hosted delivery, giving agents and buyers a stronger sense of how the space feels beyond still photography alone.",
-    image: imageUrl("1600607687920-4e2a09cf159d"),
-    gallery: [
-      imageUrl("1600607687920-4e2a09cf159d"),
-      imageUrl("1600585154340-be6161a56a0c"),
-      imageUrl("1600566753190-17f0baa2a6c3"),
-    ],
-    deliverables: [
-      "Hosted interactive walkthrough",
-      "Web-ready embed",
-      "Agent share link",
-    ],
-    scope: ["Interior capture", "Exterior highlights", "Branded delivery page"],
-    featured: true,
-    viewer: {
-      title: "Residential viewer placeholder",
-      summary: "Future 3D tour embed area for a residential digital twin.",
-      sceneType: "digital-twin",
-      interactionHint: "Drag to orbit and explore a future hosted scene.",
-      futureLoader: "PLYLoader",
-    },
-    instagramNote:
-      "Ideal for before-and-after reels, agent walkthrough teasers, and listing launch content.",
-  },
-  {
-    id: 2,
-    slug: "milton-industrial-expansion",
-    title: "Milton Industrial Expansion",
-    location: "Milton, Ontario",
-    industry: "Construction & Development",
-    cardLabel: "Monthly Site Documentation",
-    type: "Construction Progress Capture",
-    metric: "18-acre active site",
-    details: "Recurring drone and ground-based documentation",
-    summary:
-      "Recurring captures created a clear visual timeline for stakeholders reviewing progress without constant site visits.",
-    description:
-      "The project focused on consistent site-wide documentation that could support reporting, owner updates, and internal coordination across an active development schedule.",
-    image: imageUrl("1504307651254-35680f356dfd"),
-    gallery: [
-      imageUrl("1504307651254-35680f356dfd"),
-      imageUrl("1541888946425-d81bb19240f5"),
-      imageUrl("1485083269755-a7b559a4fe5e"),
-    ],
-    deliverables: [
-      "Recurring progress views",
-      "Stakeholder-ready updates",
-      "Historical visual archive",
-    ],
-    scope: [
-      "Drone overviews",
-      "Ground-level checkpoints",
-      "Milestone comparisons",
-    ],
-    featured: true,
-    viewer: {
-      title: "Site progress viewer placeholder",
-      summary:
-        "Future timeline viewer for comparing spatial documentation across milestones.",
-      sceneType: "point-cloud",
-      interactionHint:
-        "Orbit the placeholder scene to preview how future site models can be explored.",
-      futureLoader: "PLYLoader",
-    },
-    instagramNote:
-      "Supports milestone posts, progress reels, and behind-the-scenes site updates.",
-  },
-  {
-    id: 3,
-    slug: "burlington-flagship-showroom",
-    title: "Burlington Flagship Showroom",
-    location: "Burlington, Ontario",
-    industry: "Commercial & Retail Spaces",
-    cardLabel: "Retail Experience Capture",
-    type: "Commercial Space Tour",
-    metric: "12,000 sq ft showroom",
-    details: "Sales and leasing support for a customer-facing environment",
-    summary:
-      "An interactive walkthrough designed to help customers, partners, and leasing stakeholders understand the space remotely.",
-    description:
-      "The showroom capture focused on circulation, merchandising zones, and brand presentation so the business could use one asset across sales conversations, internal planning, and online promotion.",
-    image: imageUrl("1524758631624-e2822e304c36"),
-    gallery: [
-      imageUrl("1524758631624-e2822e304c36"),
-      imageUrl("1497366754035-f200968a6e72"),
-      imageUrl("1564501049412-61c2a3083791"),
-    ],
-    deliverables: [
-      "Hosted experience",
-      "Embedded viewer section",
-      "Presentation-ready stills",
-    ],
-    scope: [
-      "Front-of-house capture",
-      "Merchandising zones",
-      "Customer path mapping",
-    ],
-    featured: true,
-    hasInteractiveViewer: true,
-    viewer: {
-      title: "Embedded 3D retail showcase",
-      summary:
-        "Future interactive viewer slot for a Three.js, PLY, or Gaussian Splat project embed.",
-      sceneType: "gaussian-splat",
-      interactionHint:
-        "Use the mouse or touch to orbit the prototype scene and imagine a finished showroom capture.",
-      futureLoader: "GaussianSplatLoader",
-    },
-    instagramNote:
-      "Works well for opening campaigns, behind-the-scenes merch installs, and launch-week teaser content.",
-  },
-  {
-    id: 4,
-    slug: "hamilton-public-art-walkthrough",
-    title: "Hamilton Public Art Walkthrough",
-    location: "Hamilton, Ontario",
-    industry: "Arts, Museums & Public Installations",
-    cardLabel: "Exhibit Documentation",
-    type: "Cultural Space Preservation",
-    metric: "Multi-room installation",
-    details: "Interactive documentation for interpretation and public access",
-    summary:
-      "A digital record of an installation environment that supports archive, access, and community engagement goals.",
-    description:
-      "This concept case study demonstrates how interactive documentation can preserve the relationship between artwork, architecture, and circulation through a public-facing experience.",
-    image: imageUrl("1518998053901-5348d3961a04"),
-    gallery: [
-      imageUrl("1518998053901-5348d3961a04"),
-      imageUrl("1564399579883-451a5d44ec08"),
-      imageUrl("1548625361-58a9b86aa83b"),
-    ],
-    deliverables: [
-      "Interactive archive view",
-      "Curatorial embed support",
-      "Remote public access",
-    ],
-    scope: [
-      "Gallery capture",
-      "Interpretive story framing",
-      "Public engagement delivery",
-    ],
-    viewer: {
-      title: "Exhibit viewer placeholder",
-      summary:
-        "Future photogrammetry or splat-driven exhibit presentation area.",
-      sceneType: "photogrammetry",
-      interactionHint:
-        "Orbit the abstract scene to preview how future cultural captures can be presented online.",
-      futureLoader: "GaussianSplatLoader",
-    },
-    instagramNote:
-      "Strong fit for exhibition previews, install progress, and visitor engagement posts.",
-  },
-  {
-    id: 5,
-    slug: "mississauga-mixed-use-aerial",
-    title: "Mississauga Mixed-Use Aerial Survey",
-    location: "Mississauga, Ontario",
-    industry: "Drone & Aerial Documentation",
-    cardLabel: "Aerial Site Overview",
-    type: "Drone Documentation Project",
-    metric: "Large multi-building site",
-    details: "Aerial context and overview storytelling for a complex property",
-    summary:
-      "Aerial capture created a broader understanding of access, scale, and site relationships for a developing mixed-use property.",
-    description:
-      "This project focused on large-scale spatial context, helping stakeholders understand how multiple buildings and outdoor zones relate across the wider site.",
-    image: imageUrl("1508614999368-9260051292e5"),
-    gallery: [
-      imageUrl("1508614999368-9260051292e5"),
-      imageUrl("1500530855697-b586d89ba3ee"),
-      imageUrl("1494526585095-c41746248156"),
-    ],
-    deliverables: [
-      "Aerial overview assets",
-      "Project update visuals",
-      "Site-wide presentation support",
-    ],
-    scope: [
-      "Drone flight planning",
-      "Site overview capture",
-      "Remote stakeholder sharing",
-    ],
-    viewer: {
-      title: "Interactive aerial site model",
-      summary:
-        "Explore a loaded PLY point cloud with directional controls and reset support.",
-      sceneType: "ply",
-      interactionHint:
-        "Drag to orbit, use the control buttons to look around, or reset to the default view.",
-      futureLoader: "PLYLoader",
-      assetUrl: "/models/mississauga-mixed-use-aerial.ply",
-    },
-    instagramNote:
-      "Ideal for flyover clips, project overview reels, and phased development updates.",
-  },
-  {
     id: 6,
     slug: "tesla-model-3-aerial-capture",
     title: "Tesla Model 3 Capture",
@@ -541,22 +329,20 @@ export const projects: Project[] = [
     summary:
       "A custom capture project designed to create an interactive record of a personal vehicle with a combination of high-resolution DSLR photography and 4k iPhone footage.",
     description:
-      "This project focused on capturing a personal vehicle from multiple perspectives, providing a comprehensive and immersive view of the vehicle's features and details.",
-    image: imageUrl("1508614999368-9260051292e5"),
+      "This project focused on capturing a personal vehicle from multiple perspectives, providing a comprehensive and immersive view of the vehicle's features and details. A mixture of high-resolution DSLR photography and 4k iPhone footage was used to create a rich visual record that can be explored interactively. Processing was done to optimize the media for online presentation, allowing for a seamless and engaging experience when viewing the vehicle from various angles and distances.",
+    image: "/images/tesla-1.png",
+    videoUrl: "/videos/tesla.mp4",
     gallery: [
-      imageUrl("1508614999368-9260051292e5"),
-      imageUrl("1500530855697-b586d89ba3ee"),
-      imageUrl("1494526585095-c41746248156"),
+      "/images/tesla-1.png",
+      "/images/tesla-2.png",
+      "/images/tesla-3.png",
     ],
-    deliverables: [
-      "Aerial overview assets",
-      "Project update visuals",
-      "Site-wide presentation support",
-    ],
+    featured: true,
+    deliverables: ["3D assets", "Embeddable viewer", "Shareable media"],
     scope: [
-      "Drone flight planning",
-      "Site overview capture",
-      "Remote stakeholder sharing",
+      "DSLR photography",
+      "iPhone video capture",
+      "Custom processing and delivery",
     ],
     viewer: {
       title: "Aerial point-cloud placeholder",
@@ -565,7 +351,6 @@ export const projects: Project[] = [
       sceneType: "ply",
       interactionHint:
         "Orbit the placeholder scene to preview site-scale exploration.",
-      futureLoader: "PLYLoader",
     },
     instagramNote:
       "Ideal for flyover clips, project overview reels, and phased development updates.",
@@ -577,7 +362,7 @@ export const properties: Property[] = projects;
 export const featuredProjects = projects.filter((project) => project.featured);
 export const projectFilters = [
   "All",
-  ...industries.map((industry) => industry.name),
+  ...new Set(projects.map((project) => project.industry)),
 ];
 
 export const testimonials: Testimonial[] = [
@@ -600,18 +385,6 @@ export const testimonials: Testimonial[] = [
     role: "Museum Curator",
   },
 ];
-
-export const technologyShowcase = {
-  eyebrow: "Interactive 3D Visualization",
-  title: "Built to showcase spaces in a more immersive way.",
-  description:
-    "Halton Spatial is structured around modern 3D visualization workflows so future projects can support richer online exploration, clearer documentation, and more compelling project storytelling.",
-  supportingPoints: [
-    "Future support for PLY point clouds",
-    "Future Gaussian Splat integrations",
-    "Embeddable viewer experiences for websites and project pages",
-  ],
-};
 
 export const instagramSection: InstagramSection = {
   title: "Follow the work as it happens.",

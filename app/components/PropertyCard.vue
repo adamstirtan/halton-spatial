@@ -10,8 +10,11 @@ defineProps<{
 <template>
   <RouterLink
     :to="`/projects/${property.slug}`"
-    class="group block overflow-hidden rounded-2xl bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-cinematic"
-    :class="{ 'bg-charcoal text-white': dark }"
+    class="group block overflow-hidden rounded-2xl shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-cinematic"
+    :class="dark
+      ? 'bg-charcoal text-white'
+      : 'bg-white text-ink'
+    "
   >
     <div class="aspect-[4/3] overflow-hidden">
       <img
@@ -24,7 +27,7 @@ defineProps<{
       <p
         class="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-brass"
       >
-        {{ property.cardLabel }}
+        {{ property.industry }}
       </p>
       <h3 class="font-display text-3xl font-semibold leading-tight">
         {{ property.title }}

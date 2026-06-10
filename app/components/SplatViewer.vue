@@ -19,7 +19,6 @@ const fallbackViewer: ViewerMedia = {
     "Production-ready placeholder scene for future digital twin, point cloud, and Gaussian Splat embeds.",
   sceneType: "abstract",
   interactionHint: "Drag to orbit. Scroll or pinch to zoom.",
-  futureLoader: "PLYLoader",
 };
 
 const props = withDefaults(
@@ -104,9 +103,6 @@ onBeforeUnmount(() => {
         <span
           class="rounded-full border border-white/12 bg-white/5 px-3 py-2"
           >{{ viewerConfig.sceneType }}</span
-        >
-        <span class="rounded-full border border-white/12 bg-white/5 px-3 py-2"
-          >Future {{ viewerConfig.futureLoader }}</span
         >
       </div>
 

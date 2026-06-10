@@ -5,12 +5,6 @@ import { company } from "~/data/site";
 const isOpen = ref(false);
 const isScrolled = ref(false);
 
-const links = [
-  { label: "Home", to: "/" },
-  { label: "Projects", to: "/projects" },
-  { label: "Services", to: "/services" },
-];
-
 const updateScroll = () => {
   isScrolled.value = window.scrollY > 20;
 };
@@ -48,14 +42,6 @@ onBeforeUnmount(() => {
       </RouterLink>
 
       <div class="hidden items-center gap-8 lg:flex">
-        <RouterLink
-          v-for="link in links"
-          :key="link.to"
-          :to="link.to"
-          class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75 transition hover:text-brass"
-        >
-          {{ link.label }}
-        </RouterLink>
         <a
           :href="company.instagramUrl"
           class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75 transition hover:text-brass"
@@ -87,15 +73,6 @@ onBeforeUnmount(() => {
       class="border-t border-white/10 bg-ink px-5 pb-6 lg:hidden"
     >
       <div class="flex flex-col gap-4 pt-5">
-        <RouterLink
-          v-for="link in links"
-          :key="link.to"
-          :to="link.to"
-          class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80"
-          @click="isOpen = false"
-        >
-          {{ link.label }}
-        </RouterLink>
         <a
           :href="company.instagramUrl"
           class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80"
