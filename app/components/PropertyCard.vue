@@ -11,10 +11,7 @@ defineProps<{
   <RouterLink
     :to="`/projects/${property.slug}`"
     class="group block overflow-hidden rounded-2xl shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-cinematic"
-    :class="dark
-      ? 'bg-charcoal text-white'
-      : 'bg-white text-ink'
-    "
+    :class="dark ? 'bg-charcoal text-white' : 'bg-white text-ink'"
   >
     <div class="aspect-[4/3] overflow-hidden">
       <img
