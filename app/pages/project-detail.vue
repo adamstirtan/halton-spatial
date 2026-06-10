@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { company, projects } from "~/data/site";
+import { projects } from "~/data/site";
 import { useHead } from "@vueuse/head";
 import CTASection from "~/components/CTASection.vue";
-import PropertyCard from "~/components/PropertyCard.vue";
 import SplatViewer from "~/components/SplatViewer.vue";
 
 const route = useRoute();
@@ -137,77 +136,9 @@ useHead(() => ({
       </div>
     </section>
 
-    <section class="section-pad bg-ink text-white">
-      <div
-        class="container-wide grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end"
-      >
-        <div>
-          <p class="eyebrow mb-4">Instagram Support</p>
-          <h2
-            class="font-display text-5xl font-semibold leading-none sm:text-6xl"
-          >
-            Extend each project with social proof and work-in-progress
-            storytelling.
-          </h2>
-          <p class="mt-6 max-w-2xl text-base leading-8 text-white/68">
-            {{ project.instagramNote }}
-          </p>
-          <a
-            :href="company.instagramUrl"
-            class="btn-primary mt-8"
-            target="_blank"
-            rel="noreferrer"
-            >Follow on Instagram</a
-          >
-        </div>
-        <article class="border border-white/10 bg-white/5 p-8">
-          <p
-            class="text-xs font-semibold uppercase tracking-[0.24em] text-brass"
-          >
-            Project Summary
-          </p>
-          <p class="mt-5 text-sm leading-7 text-white/68">
-            {{ project.summary }}
-          </p>
-          <p class="mt-6 text-sm leading-7 text-white/55">
-            This detail page gives Halton Spatial a dedicated space for future
-            embeds, project notes, and related social content without sending
-            visitors to a third-party platform.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-pad bg-pearl">
-      <div class="container-wide">
-        <div class="mb-10 flex items-end justify-between gap-6">
-          <div>
-            <p class="eyebrow mb-4">Related Projects</p>
-            <h2
-              class="font-display text-5xl font-semibold leading-none sm:text-6xl"
-            >
-              More work from the archive.
-            </h2>
-          </div>
-          <RouterLink
-            to="/projects"
-            class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
-            >Back to Projects</RouterLink
-          >
-        </div>
-        <div class="grid gap-7 lg:grid-cols-2">
-          <PropertyCard
-            v-for="item in relatedProjects"
-            :key="item.id"
-            :property="item"
-          />
-        </div>
-      </div>
-    </section>
-
     <CTASection
       eyebrow="Next Project"
-      title="Ready to plan a similar capture?"
+      title="Ready to plan your project?"
       subtitle="We can scope a one-time project or an ongoing documentation program based on your site, audience, and timeline."
       primary-label="Get a Quote"
       primary-to="/get-quote"
