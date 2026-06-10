@@ -16,8 +16,11 @@ import { company } from "~/data/site";
           }}</span>
         </div>
         <p class="max-w-md text-sm leading-7 text-white/62">
-          Full-service interactive 3D photos, virtual tours, and digital twins
-          for real-world spaces across Halton Region and nearby communities.
+          Halton Spatial creates immersive 3D photos, virtual walkthroughs, and
+          digital twins that let customers explore places as if they were there
+          in person. We serve businesses and organizations across Halton Region
+          with a fully managed service—from capture and processing to web-ready
+          delivery without subscriptions or platform lock-in.
         </p>
       </div>
       <div>
@@ -27,14 +30,12 @@ import { company } from "~/data/site";
           Explore
         </h2>
         <div class="flex flex-col gap-3 text-sm text-white/68">
+          <RouterLink to="/" class="hover:text-brass">Home</RouterLink>
           <RouterLink to="/projects" class="hover:text-brass"
             >Projects</RouterLink
           >
           <RouterLink to="/services" class="hover:text-brass"
             >Services</RouterLink
-          >
-          <RouterLink to="/get-quote" class="hover:text-brass"
-            >Get a Quote</RouterLink
           >
           <a
             :href="company.instagramUrl"
@@ -52,9 +53,16 @@ import { company } from "~/data/site";
           Contact
         </h2>
         <div class="space-y-3 text-sm text-white/68">
-          <p>{{ company.email }}</p>
-          <p>{{ company.phone }}</p>
-          <p>{{ company.region }}</p>
+          <p>
+            <a :href="`mailto:${company.email}`" class="hover:text-brass">{{
+              company.email
+            }}</a>
+          </p>
+          <p>
+            <a :href="`tel:${company.phone}`" class="hover:text-brass">{{
+              company.phone
+            }}</a>
+          </p>
           <p>{{ company.serviceArea }}</p>
         </div>
       </div>

@@ -3,6 +3,7 @@ export type ProjectIndustry =
   | "Construction & Development"
   | "Commercial & Retail Spaces"
   | "Arts, Museums & Public Installations"
+  | "Personal & Unique Spaces"
   | "Drone & Aerial Documentation";
 
 export type ViewerSceneType =
@@ -118,7 +119,7 @@ export const company: Company = {
   email: "hello@haltonspatial.com",
   phone: "(365) 778-1337",
   serviceArea:
-    "Based in Halton Region, Ontario. Serving Burlington, Oakville, Milton, Halton Hills, Hamilton, Mississauga, and surrounding communities.",
+    "Serving Toronto, Mississauga, Hamilton, Burlington, Oakville and Milton throughout the Halton Region and nearby communities. ❤️",
   region: "Halton Region, Ontario",
   instagramHandle: "@HaltonSpatial",
   instagramUrl: "https://instagram.com/HaltonSpatial",
@@ -205,6 +206,13 @@ export const industries: Industry[] = [
     audience:
       "Large properties, campuses, development sites, and outdoor public spaces.",
     image: imageUrl("1508614999368-9260051292e5"),
+  },
+  {
+    name: "Personal & Unique Spaces",
+    description:
+      "Capture the spaces that matter to you with a custom approach to fit your project, property, or passion.",
+    audience: "Unique properties, personal projects, and one-of-a-kind spaces.",
+    image: imageUrl("1500530855697-b586d89ba3ee"),
   },
 ];
 
@@ -491,6 +499,48 @@ export const projects: Project[] = [
       "Aerial capture created a broader understanding of access, scale, and site relationships for a developing mixed-use property.",
     description:
       "This project focused on large-scale spatial context, helping stakeholders understand how multiple buildings and outdoor zones relate across the wider site.",
+    image: imageUrl("1508614999368-9260051292e5"),
+    gallery: [
+      imageUrl("1508614999368-9260051292e5"),
+      imageUrl("1500530855697-b586d89ba3ee"),
+      imageUrl("1494526585095-c41746248156"),
+    ],
+    deliverables: [
+      "Aerial overview assets",
+      "Project update visuals",
+      "Site-wide presentation support",
+    ],
+    scope: [
+      "Drone flight planning",
+      "Site overview capture",
+      "Remote stakeholder sharing",
+    ],
+    viewer: {
+      title: "Aerial point-cloud placeholder",
+      summary:
+        "Future point-cloud and survey-style viewer for large outdoor captures.",
+      sceneType: "ply",
+      interactionHint:
+        "Orbit the placeholder scene to preview site-scale exploration.",
+      futureLoader: "PLYLoader",
+    },
+    instagramNote:
+      "Ideal for flyover clips, project overview reels, and phased development updates.",
+  },
+  {
+    id: 6,
+    slug: "tesla-model-3-aerial-capture",
+    title: "Tesla Model 3 Capture",
+    location: "Burlington, Ontario",
+    industry: "Personal & Unique Spaces",
+    cardLabel: "Vehicle Capture",
+    type: "Vehicle Documentation Project",
+    metric: "Single vehicle",
+    details: "Aerial and ground-based capture for a personal project",
+    summary:
+      "A custom capture project designed to create an interactive record of a personal vehicle with a combination of high-resolution DSLR photography and 4k iPhone footage.",
+    description:
+      "This project focused on capturing a personal vehicle from multiple perspectives, providing a comprehensive and immersive view of the vehicle's features and details.",
     image: imageUrl("1508614999368-9260051292e5"),
     gallery: [
       imageUrl("1508614999368-9260051292e5"),

@@ -8,8 +8,9 @@ defineProps<{
 </script>
 
 <template>
-  <article
-    class="group overflow-hidden bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-cinematic"
+  <RouterLink
+    :to="`/projects/${property.slug}`"
+    class="group block overflow-hidden rounded-2xl bg-white shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-cinematic"
     :class="{ 'bg-charcoal text-white': dark }"
   >
     <div class="aspect-[4/3] overflow-hidden">
@@ -28,22 +29,12 @@ defineProps<{
       <h3 class="font-display text-3xl font-semibold leading-tight">
         {{ property.title }}
       </h3>
-      <p class="mt-3 text-sm" :class="dark ? 'text-white/64' : 'text-stone'">
-        {{ property.location }} · {{ property.details }}
-      </p>
       <p
         class="mt-4 text-sm leading-7"
         :class="dark ? 'text-white/70' : 'text-stone'"
       >
         {{ property.summary }}
       </p>
-      <RouterLink
-        :to="`/projects/${property.slug}`"
-        class="mt-6 inline-flex text-xs font-semibold uppercase tracking-[0.22em] text-brass transition"
-        :class="dark ? 'group-hover:text-white' : 'group-hover:text-ink'"
-      >
-        View Project
-      </RouterLink>
     </div>
-  </article>
+  </RouterLink>
 </template>
