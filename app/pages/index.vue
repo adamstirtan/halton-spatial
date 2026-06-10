@@ -107,38 +107,6 @@ const filteredProjects = computed(() => {
 
     <section class="section-pad bg-pearl">
       <div class="container-wide">
-        <div class="mb-12 max-w-3xl">
-          <p class="eyebrow mb-4">What We Do</p>
-          <h2
-            class="font-display text-5xl font-semibold leading-none sm:text-6xl"
-          >
-            Clear, immersive ways to explore real-world spaces online.
-          </h2>
-        </div>
-        <div class="grid gap-7 md:grid-cols-2 xl:grid-cols-5">
-          <article
-            v-for="item in whatWeDoItems"
-            :key="item.title"
-            class="min-h-56 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-cinematic"
-          >
-            <p
-              class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
-            >
-              Service
-            </p>
-            <h3 class="mt-8 font-display text-3xl font-semibold leading-tight">
-              {{ item.title }}
-            </h3>
-            <p class="mt-4 text-sm leading-7 text-stone">
-              {{ item.description }}
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad bg-ink text-white">
-      <div class="container-wide">
         <div
           class="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
         >
@@ -149,10 +117,6 @@ const filteredProjects = computed(() => {
             >
               Explore our 3D projects and digital twins.
             </h2>
-            <p class="mt-6 text-base leading-8 text-white/68">
-              Browse the available project work directly from the home page and
-              jump into the full case study from there.
-            </p>
           </div>
         </div>
         <div class="mb-10 flex flex-wrap gap-3">
@@ -162,8 +126,8 @@ const filteredProjects = computed(() => {
             class="rounded-full border px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition"
             :class="
               selectedFilter === filter
-                ? 'border-white bg-white text-ink'
-                : 'border-white/15 bg-white/5 text-white hover:border-brass hover:text-brass'
+                ? 'border-ink bg-ink text-white'
+                : 'border-ink/10 bg-white text-ink hover:border-brass hover:text-brass'
             "
             type="button"
             @click="selectedFilter = filter"
@@ -176,8 +140,39 @@ const filteredProjects = computed(() => {
             v-for="project in filteredProjects"
             :key="project.id"
             :property="project"
-            dark
           />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-ink text-white">
+      <div class="container-wide">
+        <div class="mb-12 max-w-3xl">
+          <p class="eyebrow mb-4">What We Do</p>
+          <h2
+            class="font-display text-5xl font-semibold leading-none sm:text-6xl"
+          >
+            Clear, immersive ways to explore real-world spaces online.
+          </h2>
+        </div>
+        <div class="grid gap-7 md:grid-cols-2 xl:grid-cols-5">
+          <article
+            v-for="item in whatWeDoItems"
+            :key="item.title"
+            class="min-h-56 bg-white/5 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-cinematic"
+          >
+            <p
+              class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
+            >
+              Service
+            </p>
+            <h3 class="mt-8 font-display text-3xl font-semibold leading-tight">
+              {{ item.title }}
+            </h3>
+            <p class="mt-4 text-sm leading-7 text-white/68">
+              {{ item.description }}
+            </p>
+          </article>
         </div>
       </div>
     </section>
