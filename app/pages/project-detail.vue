@@ -4,7 +4,7 @@ import { useRoute } from "vue-router";
 import { projects } from "~/data/site";
 import { useHead } from "@vueuse/head";
 import CTASection from "~/components/CTASection.vue";
-import SplatViewer from "~/components/SplatViewer.vue";
+import ProjectPlyViewer from "~/components/ProjectPlyViewer.vue";
 
 const route = useRoute();
 
@@ -21,6 +21,12 @@ const relatedProjects = computed(() => {
     .filter((item) => item.slug !== project.value?.slug)
     .slice(0, 2);
 });
+
+const hasProjectViewer = computed(
+  () =>
+    project.value?.viewer.sceneType === "ply" &&
+    Boolean(project.value.viewer.assetUrl),
+);
 
 useHead(() => ({
   title: project.value
@@ -55,7 +61,7 @@ useHead(() => ({
             {{ project.title }}
           </h1>
           <p class="mt-6 max-w-3xl text-lg leading-8 text-white/76">
-            {{ project.description }}
+            {{ project.summary }}
           </p>
           <div
             class="mt-8 flex flex-wrap gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/65"
@@ -68,60 +74,74 @@ useHead(() => ({
       </div>
     </section>
 
+    <ProjectPlyViewer v-if="hasProjectViewer" :viewer="project.viewer" />
+
     <section class="section-pad bg-pearl">
-      <div
-        class="container-wide grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start"
-      >
-        <div>
-          <p class="eyebrow mb-4">Interactive Viewer</p>
+      <div class="container-wide grid gap-8 xl:grid-cols-[1.15fr_0.85fr]">
+        <article class="border border-ink/10 bg-white p-8 shadow-sm sm:p-10">
+          <p class="eyebrow mb-4">Project Overview</p>
           <h2
             class="font-display text-5xl font-semibold leading-none sm:text-6xl"
           >
-            A dedicated surface for future interactive 3D content.
+            {{ project.title }} in full context.
           </h2>
-          <p class="mt-6 text-base leading-8 text-stone">
-            This project detail layout is prepared for embedded Three.js scenes,
-            future PLY point clouds, Gaussian Splats, and other digital twin
-            visualizations.
+          <p class="mt-6 text-base leading-8 text-stone sm:text-lg">
+            {{ project.description }}
           </p>
-          <div class="mt-8 grid gap-5 sm:grid-cols-2">
-            <article class="border border-ink/10 bg-white p-5 shadow-sm">
-              <p
-                class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
-              >
-                Deliverables
-              </p>
-              <p
-                v-for="item in project.deliverables"
-                :key="item"
-                class="mt-4 text-sm leading-7 text-stone"
-              >
-                {{ item }}
-              </p>
-            </article>
-            <article class="border border-ink/10 bg-white p-5 shadow-sm">
-              <p
-                class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
-              >
-                Scope
-              </p>
-              <p
-                v-for="item in project.scope"
-                :key="item"
-                class="mt-4 text-sm leading-7 text-stone"
-              >
-                {{ item }}
-              </p>
-            </article>
+          <div
+            class="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-stone/80"
+          >
+            <span class="rounded-full border border-ink/10 px-4 py-2">{{
+              project.location
+            }}</span>
+            <span class="rounded-full border border-ink/10 px-4 py-2">{{
+              project.metric
+            }}</span>
+            <span class="rounded-full border border-ink/10 px-4 py-2">{{
+              project.details
+            }}</span>
           </div>
-        </div>
+        </article>
 
-        <SplatViewer :viewer="project.viewer" />
+        <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-1">
+          <article class="border border-ink/10 bg-white p-6 shadow-sm">
+            <p
+              class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
+            >
+              Deliverables
+            </p>
+            <ul class="mt-5 space-y-4 text-sm leading-7 text-stone">
+              <li v-for="item in project.deliverables" :key="item">
+                {{ item }}
+              </li>
+            </ul>
+          </article>
+          <article class="border border-ink/10 bg-white p-6 shadow-sm">
+            <p
+              class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
+            >
+              Scope
+            </p>
+            <ul class="mt-5 space-y-4 text-sm leading-7 text-stone">
+              <li v-for="item in project.scope" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="section-pad bg-white">
-      <div class="container-wide grid gap-7 md:grid-cols-3">
+      <div class="container-wide">
+        <div class="mb-10 max-w-3xl">
+          <p class="eyebrow mb-4">Project Gallery</p>
+          <h2
+            class="font-display text-5xl font-semibold leading-none sm:text-6xl"
+          >
+            Static views that support the interactive experience.
+          </h2>
+        </div>
+      </div>
+      <div class="container-wide grid gap-7 md:grid-cols-2 xl:grid-cols-3">
         <article
           v-for="image in project.gallery"
           :key="image"

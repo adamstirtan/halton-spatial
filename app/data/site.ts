@@ -516,13 +516,14 @@ export const projects: Project[] = [
       "Remote stakeholder sharing",
     ],
     viewer: {
-      title: "Aerial point-cloud placeholder",
+      title: "Interactive aerial site model",
       summary:
-        "Future point-cloud and survey-style viewer for large outdoor captures.",
+        "Explore a loaded PLY point cloud with directional controls and reset support.",
       sceneType: "ply",
       interactionHint:
-        "Orbit the placeholder scene to preview site-scale exploration.",
+        "Drag to orbit, use the control buttons to look around, or reset to the default view.",
       futureLoader: "PLYLoader",
+      assetUrl: "/models/mississauga-mixed-use-aerial.ply",
     },
     instagramNote:
       "Ideal for flyover clips, project overview reels, and phased development updates.",
