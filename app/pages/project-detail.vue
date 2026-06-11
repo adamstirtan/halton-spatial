@@ -91,7 +91,7 @@ useHead(() => ({
               <p
                 class="text-xs font-semibold uppercase tracking-[0.22em] text-brass"
               >
-                Details
+                At a Glance
               </p>
               <p class="mt-4 text-sm leading-7 text-white/70">
                 {{ project.details }}
@@ -105,7 +105,7 @@ useHead(() => ({
     <section class="section-pad bg-white">
       <div class="container-wide">
         <div class="mb-10 max-w-3xl">
-          <p class="eyebrow mb-4">Photo Gallery</p>
+          <p class="eyebrow mb-4">Gallery</p>
         </div>
       </div>
       <div class="container-wide grid gap-7 md:grid-cols-2 xl:grid-cols-3">
@@ -126,7 +126,7 @@ useHead(() => ({
     <section class="section-pad bg-pearl">
       <div class="container-wide grid gap-8 xl:grid-cols-[1.15fr_0.85fr]">
         <article class="border border-ink/10 bg-white p-8 shadow-sm sm:p-10">
-          <p class="eyebrow mb-4">Summary</p>
+          <p class="eyebrow mb-4">Overview</p>
           <p class="mt-6 text-base leading-8 text-stone sm:text-lg">
             {{ project.description }}
           </p>
@@ -160,9 +160,9 @@ useHead(() => ({
     </section>
 
     <CTASection
-      eyebrow="Next Project"
-      title="Ready to plan your project?"
-      subtitle="We can scope a one-time project or an ongoing documentation program based on your site, audience, and timeline."
+      eyebrow="Next Step"
+      title="Ready to create something of your own?"
+      subtitle="If you have a space worth sharing, we can help shape the right way to capture it."
       primary-label="Get a Quote"
       primary-to="/get-quote"
       secondary-label="View Services"
@@ -177,10 +177,11 @@ useHead(() => ({
         <h1
           class="font-display text-5xl font-semibold leading-none sm:text-6xl"
         >
-          That project is not available.
+          We could not find that project.
         </h1>
         <p class="mt-6 text-base leading-8 text-stone">
-          Return to the project archive to browse the current sample work.
+          Head back to the projects page to explore the work that is currently
+          available.
         </p>
         <RouterLink to="/" class="btn-primary mt-8"> Back Home </RouterLink>
       </div>

@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
 import {
   company,
-  featuredProjects,
   finalCta,
+  homeProjects,
   homeHero,
-  instagramSection,
-  projectFilters,
-  projects,
-  processSteps,
   testimonials,
   whatWeDoItems,
   whyHaltonSpatial,
@@ -40,20 +35,8 @@ useHead({
 });
 
 const spotlightProject =
-  featuredProjects.find((project) => project.hasInteractiveViewer) ??
-  featuredProjects[0];
-
-const selectedFilter = ref("All");
-
-const filteredProjects = computed(() => {
-  if (selectedFilter.value === "All") {
-    return projects;
-  }
-
-  return projects.filter(
-    (project) => project.industry === selectedFilter.value,
-  );
-});
+  homeProjects.find((project) => project.hasInteractiveViewer) ??
+  homeProjects[0];
 </script>
 
 <template>
@@ -96,9 +79,9 @@ const filteredProjects = computed(() => {
               }}</RouterLink>
             </div>
             <p class="mt-8 max-w-lg text-sm leading-7 text-white/55">
-              Based in {{ company.region }}, we deliver complete on-site
-              capture, processing, hosting, and handoff without requiring
-              clients to buy equipment or manage software.
+              Based in {{ company.region }}, we create polished, immersive
+              experiences for spaces that deserve to be seen with more feeling
+              and more clarity.
             </p>
           </div>
         </div>
@@ -111,33 +94,20 @@ const filteredProjects = computed(() => {
           class="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
         >
           <div class="max-w-3xl">
-            <p class="eyebrow mb-4">Projects</p>
+            <p class="eyebrow mb-4">Featured Projects</p>
             <h2
               class="font-display text-5xl font-semibold leading-none sm:text-6xl"
             >
-              Explore our 3D projects and digital twins.
+              A few recent pieces that show how a space can be felt online.
             </h2>
           </div>
-        </div>
-        <div class="mb-10 flex flex-wrap gap-3">
-          <button
-            v-for="filter in projectFilters"
-            :key="filter"
-            class="rounded-full border px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition"
-            :class="
-              selectedFilter === filter
-                ? 'border-ink bg-ink text-white'
-                : 'border-ink/10 bg-white text-ink hover:border-brass hover:text-brass'
-            "
-            type="button"
-            @click="selectedFilter = filter"
+          <RouterLink to="/projects" class="btn-secondary"
+            >View All Projects</RouterLink
           >
-            {{ filter }}
-          </button>
         </div>
         <div class="grid gap-7 lg:grid-cols-3">
           <PropertyCard
-            v-for="project in filteredProjects"
+            v-for="project in homeProjects"
             :key="project.id"
             :property="project"
           />
@@ -152,7 +122,8 @@ const filteredProjects = computed(() => {
           <h2
             class="font-display text-5xl font-semibold leading-none sm:text-6xl"
           >
-            Clear, immersive ways to explore real-world spaces online.
+            Experiences that make a place feel closer, warmer, and easier to
+            understand.
           </h2>
         </div>
         <div class="grid gap-7 md:grid-cols-2 xl:grid-cols-5">
@@ -184,8 +155,7 @@ const filteredProjects = computed(() => {
           <h2
             class="font-display text-5xl font-semibold leading-none sm:text-6xl"
           >
-            A local service model built around outcomes, not software
-            subscriptions.
+            Simple on the surface. Thoughtful in every detail.
           </h2>
         </div>
         <div class="grid gap-7 md:grid-cols-2 xl:grid-cols-5">
@@ -204,7 +174,7 @@ const filteredProjects = computed(() => {
         </div>
 
         <div class="mt-16">
-          <p class="eyebrow mb-10">Client Feedback</p>
+          <p class="eyebrow mb-10">What Clients Say</p>
           <div class="grid gap-12 lg:grid-cols-3">
             <TestimonialCard
               v-for="testimonial in testimonials"

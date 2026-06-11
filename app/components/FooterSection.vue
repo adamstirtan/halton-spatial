@@ -4,7 +4,7 @@ import { company } from "~/data/site";
 
 <template>
   <footer class="bg-ink px-5 py-14 text-white sm:px-8 lg:px-12">
-    <div class="container-wide grid gap-10 md:grid-cols-[2.2fr_1fr]">
+    <div class="container-wide grid gap-10 md:grid-cols-[2.2fr_0.8fr_1fr]">
       <div>
         <div class="mb-5 flex items-center gap-3">
           <span
@@ -22,6 +22,30 @@ import { company } from "~/data/site";
           with a fully managed service—from capture and processing to web-ready
           delivery without subscriptions or platform lock-in.
         </p>
+      </div>
+      <div>
+        <h2
+          class="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-brass"
+        >
+          Explore
+        </h2>
+        <div class="space-y-3 text-sm text-white/68">
+          <p>
+            <RouterLink to="/projects" class="hover:text-brass"
+              >Projects</RouterLink
+            >
+          </p>
+          <p>
+            <RouterLink to="/services" class="hover:text-brass"
+              >Services</RouterLink
+            >
+          </p>
+          <p>
+            <RouterLink to="/get-quote" class="hover:text-brass"
+              >Get a Quote</RouterLink
+            >
+          </p>
+        </div>
       </div>
       <div>
         <h2

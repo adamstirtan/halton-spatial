@@ -42,6 +42,16 @@ onBeforeUnmount(() => {
       </RouterLink>
 
       <div class="hidden items-center gap-8 lg:flex">
+        <RouterLink
+          to="/projects"
+          class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75 transition hover:text-brass"
+          >Projects</RouterLink
+        >
+        <RouterLink
+          to="/services"
+          class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75 transition hover:text-brass"
+          >Services</RouterLink
+        >
         <a
           :href="company.instagramUrl"
           class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75 transition hover:text-brass"
@@ -73,6 +83,18 @@ onBeforeUnmount(() => {
       class="border-t border-white/10 bg-ink px-5 pb-6 lg:hidden"
     >
       <div class="flex flex-col gap-4 pt-5">
+        <RouterLink
+          to="/projects"
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80"
+          @click="isOpen = false"
+          >Projects</RouterLink
+        >
+        <RouterLink
+          to="/services"
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80"
+          @click="isOpen = false"
+          >Services</RouterLink
+        >
         <a
           :href="company.instagramUrl"
           class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80"

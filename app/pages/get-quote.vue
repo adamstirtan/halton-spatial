@@ -6,27 +6,27 @@ import QuoteForm from "~/components/QuoteForm.vue";
 const quoteSteps = [
   {
     step: "01",
-    title: "Initial Discussion",
+    title: "Say Hello",
     description:
-      "We learn about the space, your timeline, and how you plan to use the final interactive deliverable.",
+      "Tell us a little about the space, the timing, and what you want people to feel when they see it.",
   },
   {
     step: "02",
-    title: "Site Visit or Capture Planning",
+    title: "Shape the Plan",
     description:
-      "We confirm access, scope, and the best approach for on-site capture.",
+      "We map out the right approach, the right timing, and the smoothest way to capture everything well.",
   },
   {
     step: "03",
-    title: "Quote",
+    title: "Receive a Clear Quote",
     description:
-      "You receive a clear proposal covering capture, processing, hosting, and delivery.",
+      "You get a clear proposal with everything laid out simply and transparently.",
   },
   {
     step: "04",
-    title: "Delivery",
+    title: "Bring It to Life",
     description:
-      "Once approved, we complete the work and provide hosted outputs, embeds, and share-ready links.",
+      "Once approved, we create the final experience and prepare it for sharing.",
   },
 ];
 
@@ -46,8 +46,8 @@ useHead({
     <HeroSection
       compact
       eyebrow="Get Quote"
-      title="Start the conversation about your space."
-      subtitle="Tell us what you are documenting, marketing, or building and we will shape the right capture approach for your project."
+      title="Let’s talk about your space."
+      subtitle="Share what you have in mind, and we will help shape the right next step."
       image="https://images.unsplash.com/photo-1600607688960-e095ff83135c?auto=format&fit=crop&w=2200&q=85"
     />
     <section class="section-pad bg-pearl">
@@ -60,7 +60,7 @@ useHead({
           <div>
             <p class="eyebrow mb-4">What Happens Next</p>
             <h2 class="font-display text-4xl font-semibold leading-tight">
-              A clear process from first message to final delivery.
+              A simple path from first message to finished experience.
             </h2>
           </div>
 

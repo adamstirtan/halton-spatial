@@ -124,10 +124,10 @@ export const company: Company = {
 };
 
 export const homeHero: HomeHero = {
-  eyebrow: "Halton Region 3D Capture Studio",
-  title: "Interactive 3D Photos & Virtual Tours",
+  eyebrow: "Halton Region Visual Studio",
+  title: "Bring your space online.",
   subtitle:
-    "Explore real-world spaces online through immersive 3D walkthroughs and digital twins.",
+    "Thoughtfully crafted visuals and immersive tours that help people feel a place before they ever arrive.",
   primaryLabel: "Get a Quote",
   primaryTo: "/get-quote",
   secondaryLabel: "View Tesla Project",
@@ -137,27 +137,27 @@ export const whatWeDoItems: WhatWeDoItem[] = [
   {
     title: "3D Photos",
     description:
-      "Create rich spatial imagery that helps people understand scale, layout, and finish before they arrive in person.",
+      "Beautiful imagery that gives people a stronger sense of space, light, and layout before they step inside.",
   },
   {
     title: "Virtual Tours",
     description:
-      "Let visitors move through a property, project, exhibit, or venue online at their own pace from any device.",
+      "Smooth, intuitive tours that invite people to explore at their own pace from any screen.",
   },
   {
     title: "Digital Twins",
     description:
-      "Build a lasting visual record of a real-world space for documentation, presentation, and future reference.",
+      "A lasting digital version of your space, ready to revisit, share, and build on over time.",
   },
   {
     title: "Web Embedding",
     description:
-      "Publish interactive experiences on your website, landing pages, and presentations with simple hosted delivery.",
+      "Ready for your website, your presentation, or wherever you want the experience to live.",
   },
   {
     title: "Progress Documentation",
     description:
-      "Track change over time for construction, fit-outs, installations, and site development with clear visual updates.",
+      "A clear visual record of how a space changes, grows, and comes together over time.",
   },
 ];
 
@@ -217,27 +217,27 @@ export const whyHaltonSpatial: BenefitItem[] = [
   {
     title: "Full-Service Capture",
     description:
-      "We handle on-site capture, processing, hosting, and delivery so your team can stay focused on the project itself.",
+      "From the first visit to the final handoff, we take care of the details so you can stay focused on the bigger picture.",
   },
   {
     title: "No Equipment Required",
     description:
-      "There is no camera kit to buy, no scanner to manage, and no learning curve for your staff.",
+      "No hardware to buy. No software to learn. Just a polished result, ready to use.",
   },
   {
     title: "No Platform Management",
     description:
-      "You do not need to maintain software subscriptions or troubleshoot the technology behind the final experience.",
+      "We handle the platform side quietly in the background, so the experience stays simple for you and your audience.",
   },
   {
     title: "Local Service",
     description:
-      "Halton Spatial works locally across Halton Region and nearby communities with responsive scheduling and on-site support.",
+      "Local, responsive, and easy to work with from the first conversation to the final delivery.",
   },
   {
     title: "Modern Visualization Technology",
     description:
-      "Your project benefits from contemporary 3D presentation tools without forcing clients and stakeholders into technical workflows.",
+      "Modern visuals with a calm, effortless feel. Powerful behind the scenes, approachable everywhere else.",
   },
 ];
 
@@ -273,7 +273,7 @@ export const serviceCategories: ServiceCategory[] = [
     slug: "real-estate-tours",
     title: "Real Estate Tours",
     summary:
-      "Property marketing experiences built to help buyers and tenants understand a space before the first visit.",
+      "Give buyers and tenants a better feel for a space before the first showing.",
     bullets: [
       "Property marketing",
       "Interactive walkthroughs",
@@ -284,28 +284,28 @@ export const serviceCategories: ServiceCategory[] = [
     slug: "construction-documentation",
     title: "Construction Documentation",
     summary:
-      "Recurring visual records that support progress tracking, milestone review, and historical reference.",
+      "A clear visual timeline that helps teams stay aligned from first phase to final finish.",
     bullets: ["Progress tracking", "Site documentation", "Historical records"],
   },
   {
     slug: "commercial-spaces",
     title: "Commercial Spaces",
     summary:
-      "Immersive presentations for retail, hospitality, and office environments where layout and atmosphere matter.",
+      "Show the flow, feel, and character of a space with more clarity than still images alone.",
     bullets: ["Retail", "Hospitality", "Office environments"],
   },
   {
     slug: "arts-culture",
     title: "Arts & Culture",
     summary:
-      "Digital preservation and public-facing presentation for exhibits, installations, and sculptural work.",
+      "Thoughtful digital presentation for exhibits, installations, and spaces people want to experience again.",
     bullets: ["Sculptures", "Installations", "Exhibits"],
   },
   {
     slug: "drone-capture",
     title: "Drone Capture",
     summary:
-      "Aerial coverage for large sites, outdoor environments, and overview storytelling across complex spaces.",
+      "A wider point of view for properties, outdoor spaces, and projects that deserve a broader perspective.",
     bullets: ["Large properties", "Outdoor spaces", "Site overviews"],
   },
 ];
@@ -327,9 +327,9 @@ export const projects: Project[] = [
     metric: "Single vehicle",
     details: "Aerial and ground-based capture for a personal project",
     summary:
-      "A custom capture project designed to create an interactive record of a personal vehicle with a combination of high-resolution DSLR photography and 4k iPhone footage.",
+      "A custom visual capture designed to present a personal vehicle with clarity, depth, and a more cinematic sense of presence.",
     description:
-      "This project focused on capturing a personal vehicle from multiple perspectives, providing a comprehensive and immersive view of the vehicle's features and details. A mixture of high-resolution DSLR photography and 4k iPhone footage was used to create a rich visual record that can be explored interactively. Processing was done to optimize the media for online presentation, allowing for a seamless and engaging experience when viewing the vehicle from various angles and distances.",
+      "This project was about making a personal vehicle feel as striking online as it does in person. We captured it from multiple angles to highlight form, finish, and detail, then shaped everything into a viewing experience that feels clean, smooth, and easy to explore.",
     image: "/images/tesla-1.png",
     videoUrl: "/videos/tesla.mp4",
     gallery: [
@@ -360,6 +360,7 @@ export const projects: Project[] = [
 export const portfolioItems: PortfolioItem[] = projects;
 export const properties: Property[] = projects;
 export const featuredProjects = projects.filter((project) => project.featured);
+export const homeProjects = projects.filter((project) => project.featured);
 export const projectFilters = [
   "All",
   ...new Set(projects.map((project) => project.industry)),
@@ -401,9 +402,9 @@ export const instagramSection: InstagramSection = {
 };
 
 export const finalCta = {
-  title: "Ready to Bring Your Space Online?",
+  title: "Ready to show your space in its best light?",
   subtitle:
-    "Tell us what you are documenting, marketing, or building and we will shape the right capture approach for it.",
+    "Tell us what you have in mind, and we will shape a simple, thoughtful plan around it.",
   primaryLabel: "Get a Quote",
   primaryTo: "/get-quote",
 };
